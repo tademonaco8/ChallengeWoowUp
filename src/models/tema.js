@@ -9,10 +9,12 @@ class Tema {
         this.suscriptores.push(usuario);
     }
 
-    enviarAlerta(alerta) {
+    enviarAlerta(alerta, filtro) {
         this.alertas.push(alerta);
         this.suscriptores.forEach((usuario) => {
-            usuario.recibirAlerta(alerta);
+            if (filtro.nombre === usuario.nombre || filtro === "") {
+                usuario.recibirAlerta(alerta);
+            }
         });
     }
 }

@@ -2,7 +2,7 @@ const Alerta = require('../models/alerta');
 
 class AlertaFactory {
     static crearAlerta(mensaje, urgente, fechaExpiracion, destinatarios, tema) {
-        let id = AlertaFactory.generarIdUnico(); // Generar un ID único
+        let id = AlertaFactory.generarIdUnico();
         return new Alerta(mensaje, urgente, fechaExpiracion, destinatarios, tema, id);
     }
 
