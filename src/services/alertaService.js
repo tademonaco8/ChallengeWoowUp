@@ -31,7 +31,7 @@ class AlertaService {
                 }
                 temas.forEach(tema => {
                     if (alerta.tema == tema) {
-                        if ((alerta.tema.nombre === filtroTema.nombre && filtroUsuario === "") || (filtroTema === "" && filtroUsuario == "")) {
+                        if ((alerta.tema.nombre === filtroTema.nombre) || (filtroTema === "" && filtroUsuario == "") ||(filtroTema ==="")) {
                             tema.enviarAlerta(alerta, filtroUsuario);
                         }
                     }
@@ -70,22 +70,26 @@ class AlertaService {
                     alertasInformativas.push(alerta);
                 }
             } else if (alerta.tema.nombre != undefined) {
-                if (alerta.tema.nombre.includes(filtroTema.nombre) || filtroTema == "") {
+                if (alerta.tema.nombre.includes(filtroTema.nombre) || alerta.destinatarios.includes(filtroUsuario)) {
                     if (alerta.urgente) {
                         alertasUrgente.push(alerta);
                     } else if (!alerta.urgente) {
                         alertasInformativas.push(alerta);
                     }
-
-                }
-            } else {
-                if (filtroTema === "") {
+                } else if (alerta.tema.nombre.includes(filtroTema.nombre) || filtroTema == "") {
                     if (alerta.urgente) {
                         alertasUrgente.push(alerta);
                     } else if (!alerta.urgente) {
                         alertasInformativas.push(alerta);
                     }
+            }} else {
+                // if (filtroTema === "") {
+                if (alerta.urgente) {
+                    alertasUrgente.push(alerta);
+                } else if (!alerta.urgente) {
+                    alertasInformativas.push(alerta);
                 }
+                // }
             }
         });
         alertasUrgente = alertasUrgente.slice().sort(compararAlertasDesc);

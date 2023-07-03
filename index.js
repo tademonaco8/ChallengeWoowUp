@@ -39,7 +39,7 @@ alertas.push(alerta1, alerta2, alerta3, alerta4, alerta5, alerta6);
 
 //en estos dos campos podemos definir los filtros para las alertas, tema y usuario, acepta valores de tipo Tema y Usuario correspondientemente
 //en el caso de no querer filtrar, dejar en "", se pueden combinar
-let filtroUsuario = "";
+let filtroUsuario = usuario2;
 let filtroTema = "";
 
 // Obtener alertas no expiradas para enviarlas
